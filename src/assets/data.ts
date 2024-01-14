@@ -13,25 +13,25 @@ import Post3 from '@/assets/images/post-3.jpg';
 
 export const cardContentData = [
   {
-    image: furniture1,
+    image: furniture1.src,
     title: 'Furniture',
     description: '5 Items',
     buttonText: 'Read More',
   },
   {
-    image: furniture2,
+    image: furniture2.src,
     title: 'Furniture',
     description: '5 Items',
     buttonText: 'Read More',
   },
   {
-    image: furniture3,
+    image: furniture3.src,
     title: 'Furniture',
     description: '5 Items',
     buttonText: 'Read More',
   },
   {
-    image: furniture4,
+    image: furniture4.src,
     title: 'Furniture',
     description: '5 Items',
     buttonText: 'Read More',
