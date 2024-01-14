@@ -1,5 +1,6 @@
 import { ReactNode, Suspense } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import AppLayout from '@/components/AppLayout';
 import PartnerLogos from '@/components/Common/PartnerLogos';
@@ -28,7 +29,7 @@ function Product() {
   const { data, isLoading } = useFetchProductQuery(productId);
 
   if (isLoading) {
-    return <Typography>Loading...</Typography>;
+    return <Typography align='center'>Loading...</Typography>;
   }
 
   return (
@@ -36,7 +37,7 @@ function Product() {
       <Box sx={style.productDetailsWrap}>
         <Container>
           <Typography sx={style.breadcrumb}>
-            Home{' '}
+            <Link href='/'>Home </Link>
             <Typography
               component='span'
               sx={{ ...style.breadcrumb, color: '#BDBDBD' }}

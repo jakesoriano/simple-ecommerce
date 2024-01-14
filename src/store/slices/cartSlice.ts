@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { calculateDiscount } from '@/helpers/utility';
+
 interface CartItem {
   id: string;
   title: string;
@@ -18,6 +20,7 @@ const cartSlice = createSlice({
   initialState: {
     items: [] as CartItem[],
     totalQty: 0 as number,
+    totalPrice: 0 as number,
   },
   reducers: {
     addToCart(state, action) {
@@ -36,6 +39,10 @@ const cartSlice = createSlice({
       state.totalQty = state.items.reduce((total, item) => {
         return total + item.quantity;
       }, 0);
+
+      state.totalPrice = state.items.reduce((total, item) => {
+        return total + calculateDiscount(item.price, item.discountPercentage);
+      }, 0);
     },
     removeFromCart(state, action) {
       const itemIndex = state.items.findIndex(
@@ -47,6 +54,10 @@ const cartSlice = createSlice({
 
       state.totalQty = state.items.reduce((total, item) => {
         return total + item.quantity;
+      }, 0);
+
+      state.totalPrice = state.items.reduce((total, item) => {
+        return total + calculateDiscount(item.price, item.discountPercentage);
       }, 0);
     },
     updateQuantity(state, action) {
@@ -60,6 +71,10 @@ const cartSlice = createSlice({
 
       state.totalQty = state.items.reduce((total, item) => {
         return total + item.quantity;
+      }, 0);
+
+      state.totalPrice = state.items.reduce((total, item) => {
+        return total + calculateDiscount(item.price, item.discountPercentage);
       }, 0);
     },
   },
