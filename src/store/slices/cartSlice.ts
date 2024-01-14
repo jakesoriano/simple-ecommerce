@@ -40,9 +40,15 @@ const cartSlice = createSlice({
         return total + item.quantity;
       }, 0);
 
-      state.totalPrice = state.items.reduce((total, item) => {
-        return total + calculateDiscount(item.price, item.discountPercentage);
-      }, 0);
+      let total: number = 0;
+      state.items.map((item) => {
+        total =
+          total +
+          calculateDiscount(item.price, item.discountPercentage) *
+            item.quantity;
+      });
+
+      state.totalPrice = total;
     },
     removeFromCart(state, action) {
       const itemIndex = state.items.findIndex(
@@ -56,9 +62,15 @@ const cartSlice = createSlice({
         return total + item.quantity;
       }, 0);
 
-      state.totalPrice = state.items.reduce((total, item) => {
-        return total + calculateDiscount(item.price, item.discountPercentage);
-      }, 0);
+      let total: number = 0;
+      state.items.map((item) => {
+        total =
+          total +
+          calculateDiscount(item.price, item.discountPercentage) *
+            item.quantity;
+      });
+
+      state.totalPrice = total;
     },
     updateQuantity(state, action) {
       const { id, quantity } = action.payload;
@@ -73,12 +85,15 @@ const cartSlice = createSlice({
         return total + item.quantity;
       }, 0);
 
-      state.totalPrice = state.items.reduce((total, item) => {
-        return (
-          (total + calculateDiscount(item.price, item.discountPercentage)) *
-          item.quantity
-        );
-      }, 0);
+      let total: number = 0;
+      state.items.map((item) => {
+        total =
+          total +
+          calculateDiscount(item.price, item.discountPercentage) *
+            item.quantity;
+      });
+
+      state.totalPrice = total;
     },
   },
 });

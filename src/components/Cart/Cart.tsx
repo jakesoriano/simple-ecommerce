@@ -20,8 +20,6 @@ function Cart() {
     return <Typography>No items in cart.</Typography>;
   }
 
-  console.log(cartTotalPrice, 'wew');
-
   return (
     <>
       <Box
