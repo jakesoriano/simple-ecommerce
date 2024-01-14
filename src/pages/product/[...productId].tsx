@@ -41,7 +41,7 @@ function Product() {
               component='span'
               sx={{ ...style.breadcrumb, color: '#BDBDBD' }}
             >
-              {' >'}
+              {' > '}
               Shop
             </Typography>
           </Typography>
