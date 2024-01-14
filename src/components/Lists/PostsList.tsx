@@ -5,7 +5,11 @@ import { useTheme } from '@mui/material';
 
 import ContentMediaCard from '@/components/Cards/ContentMediaCard';
 
-function PostsList({ data }) {
+interface PostsListProps {
+  data: Array<any>;
+}
+
+function PostsList({ data }: PostsListProps) {
   const theme = useTheme();
 
   const renderedPosts = data.map((item: any, index: number) => {

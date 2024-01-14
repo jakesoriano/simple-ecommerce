@@ -72,9 +72,8 @@ function CustomerReview() {
       <Box sx={style.mediaWrapper}>
         {images.map((image, index) => {
           return (
-            <Box sx={style.media}>
+            <Box key={index} sx={style.media}>
               <Image
-                key={index}
                 src={image}
                 alt={`review-${index + 1}`}
                 style={{ objectFit: 'cover' }}

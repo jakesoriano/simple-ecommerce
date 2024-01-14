@@ -34,8 +34,8 @@ const footerLinksData = [
 const renderedFooterLinks = footerLinksData.map(
   (item: any, itemIdx: number) => {
     return (
-      <Box>
-        <Typography key={itemIdx} sx={{ fontWeight: 700, mb: '20px' }}>
+      <Box key={itemIdx}>
+        <Typography sx={{ fontWeight: 700, mb: '20px' }}>
           {item.category}
         </Typography>
         {item.links.map((link: any, linkIdx: number) => {

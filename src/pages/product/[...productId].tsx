@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { useRouter } from 'next/router';
-import Error from 'next/error';
 
 import AppLayout from '@/components/AppLayout';
 import PartnerLogos from '@/components/Common/PartnerLogos';
@@ -36,7 +35,16 @@ function Product() {
     <Box>
       <Box sx={style.productDetailsWrap}>
         <Container>
-          <Typography sx={style.breadcrumb}>Home <Typography component='span' sx={{...style.breadcrumb, color: '#BDBDBD'}} >> Shop</Typography></Typography>
+          <Typography sx={style.breadcrumb}>
+            Home{' '}
+            <Typography
+              component='span'
+              sx={{ ...style.breadcrumb, color: '#BDBDBD' }}
+            >
+              {' >'}
+              Shop
+            </Typography>
+          </Typography>
           <Box sx={style.productDetails}>
             <ProductGallery images={data?.images} />
             <ProductDetails product={data} />
@@ -53,7 +61,7 @@ function Product() {
       <Box sx={style.bestSellerWrap}>
         <Container>
           <SectionHeading title='Best Seller Products' />
-          <ProductsList paginate={false} textPosition='left' />
+          <ProductsList paginate={false} />
         </Container>
       </Box>
 
@@ -67,12 +75,10 @@ function Product() {
 }
 
 Product.getLayout = function getLayout(page: ReactNode, pageProps: any) {
-  const router = useRouter();
-  const productId = getQueryParam('productId', router.query);
-  return !productId ? (
-    <Error statusCode={404} title='Page Not Found' />
-  ) : (
-    <AppLayout {...pageProps}>{page}</AppLayout>
+  return (
+    <Suspense fallback='Loading...'>
+      <AppLayout {...pageProps}>{page}</AppLayout>;
+    </Suspense>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 import Box from '@mui/material/Box';
@@ -17,21 +17,27 @@ function CartItem({ item }: CartItemProps) {
   const [quantity, setQuantity] = useState<number>(item.quantity);
   const dispatch = useDispatch();
 
+  const handleRemoveFromCart = useCallback(
+    (id: number) => {
+      dispatch(removeFromCart(id));
+    },
+    [quantity, dispatch]
+  );
+
+  const handleUpdateQuantity = useCallback(
+    (id: number) => {
+      dispatch(updateQuantity({ id, quantity }));
+    },
+    [quantity, dispatch]
+  );
+
   useEffect(() => {
     if (quantity > 0) {
       handleUpdateQuantity(item.id);
     } else {
       handleRemoveFromCart(item.id);
     }
-  }, [quantity]);
-
-  const handleRemoveFromCart = (id: number) => {
-    dispatch(removeFromCart(id));
-  };
-
-  const handleUpdateQuantity = (id: number) => {
-    dispatch(updateQuantity({ id, quantity }));
-  };
+  }, [quantity, item.id]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(parseInt(event.target.value));

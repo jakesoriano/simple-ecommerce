@@ -40,29 +40,32 @@ function SectionHeading({
     >
       <Typography
         variant='h2'
-        align={textPosition || 'center'}
         sx={{
           fontSize: topTextSize ?? '1.25rem',
           fontWeight: topTextWeight ?? '400',
           color: topTextColor ?? 'text.secondary',
+          textAlign: textPosition ?? 'center',
         }}
       >
         {topText}
       </Typography>
       <Typography
         variant='h3'
-        align={textPosition || 'center'}
         sx={{
           textTransform: titleUppercase ? 'uppercase' : 'none',
           my: '10px',
           fontSize: titleSize ?? '1.5rem',
+          textAlign: textPosition ?? 'center',
         }}
       >
         {title}
       </Typography>
       <Typography
-        align={textPosition || 'center'}
-        sx={{ fontSize: '0.875rem', color: 'text.secondary' }}
+        sx={{
+          fontSize: '0.875rem',
+          color: 'text.secondary',
+          textAlign: textPosition ?? 'center',
+        }}
       >
         {subTitle}
       </Typography>

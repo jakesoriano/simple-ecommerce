@@ -3,7 +3,11 @@ import IconContent from '@/components/Common/IconContent';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material';
 
-function IconContentList({ data }) {
+interface IconContentListProps {
+  data: Array<any>;
+}
+
+function IconContentList({ data }: IconContentListProps) {
   const theme = useTheme();
 
   return (
