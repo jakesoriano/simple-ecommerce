@@ -8,7 +8,7 @@ export default function Document(props: DocumentProps) {
   return (
     <Html lang='en'>
       <Head>
-        <DocumentHeadTags {...props} />
+        <DocumentHeadTags emotionStyleTags={[]} {...props} />
       </Head>
       <body>
         <Main />

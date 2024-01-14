@@ -40,7 +40,11 @@ function CartItem({ item }: CartItemProps) {
   }, [quantity, item.id]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(parseInt(event.target.value));
+    const regex = /^[0-9\b]+$/;
+
+    if (event.target.value === '' || regex.test(event.target.value)) {
+      setQuantity(parseInt(event.target.value));
+    }
   };
 
   return (
