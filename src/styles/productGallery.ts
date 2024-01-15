@@ -12,8 +12,12 @@ export const productGalleryStyles = {
   galleryWrap: {
     mt: '42px',
     display: 'flex',
-    justifyContent: 'center',
     gap: '18px',
   },
-  galleryItem: { position: 'relative', height: '75px', flexGrow: 1 },
+  galleryItem: {
+    position: 'relative',
+    height: '75px',
+    flexGrow: 1,
+    maxWidth: '100px',
+  },
 };
