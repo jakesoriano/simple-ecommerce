@@ -17,27 +17,19 @@ function CartItem({ item }: CartItemProps) {
   const [quantity, setQuantity] = useState<number>(item.quantity);
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = useCallback(
-    (id: number) => {
-      dispatch(removeFromCart(id));
-    },
-    [quantity, dispatch]
-  );
+  const handleRemoveFromCart = (id: number) => {
+    dispatch(removeFromCart(id));
+  };
 
-  const handleUpdateQuantity = useCallback(
-    (id: number) => {
-      dispatch(updateQuantity({ id, quantity }));
-    },
-    [quantity, dispatch]
-  );
+  const handleUpdateQuantity = (id: number) => {
+    dispatch(updateQuantity({ id, quantity }));
+  };
 
-  useEffect(() => {
-    if (quantity > 0) {
-      handleUpdateQuantity(item.id);
-    } else {
-      handleRemoveFromCart(item.id);
-    }
-  }, [quantity, item.id]);
+  if (quantity > 0) {
+    handleUpdateQuantity(item.id);
+  } else {
+    handleRemoveFromCart(item.id);
+  }
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const regex = /^[0-9\b]+$/;
@@ -93,6 +85,7 @@ function CartItem({ item }: CartItemProps) {
               sx={{
                 backgroundColor: 'primary.main',
                 color: 'common.white',
+                cursor: 'pointer',
               }}
               onClick={() => setQuantity(quantity - 1)}
             >
@@ -122,6 +115,7 @@ function CartItem({ item }: CartItemProps) {
               sx={{
                 backgroundColor: 'primary.main',
                 color: 'common.white',
+                cursor: 'pointer',
               }}
               onClick={() => setQuantity(quantity + 1)}
             >
