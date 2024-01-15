@@ -11,6 +11,9 @@ export const productCardStyles = (theme: any) => {
     imageWrapper: {
       position: 'relative',
       height: '360px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       [theme.breakpoints.up('md')]: { height: '280px' },
     },
     content: { p: '25px 25px 35px' },

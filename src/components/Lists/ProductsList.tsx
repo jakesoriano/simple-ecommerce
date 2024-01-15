@@ -49,7 +49,7 @@ function ProductsList({ paginate }: ProductsListProps) {
           },
         }}
       >
-        {combinedData.map((product: any, index: number) => (
+        {combinedData.map((product: any) => (
           <ProductCard
             key={product.id}
             id={product.id}
@@ -57,6 +57,7 @@ function ProductsList({ paginate }: ProductsListProps) {
             title={product.title}
             category={product.category}
             price={product.price}
+            stock={product.stock}
           />
         ))}
       </Box>

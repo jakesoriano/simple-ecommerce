@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import { useTheme } from '@mui/material';
 
 import { formatCurrecy } from '@/helpers/utility';
@@ -15,9 +16,17 @@ interface ProductCardProps {
   title: string;
   category: string;
   price: number;
+  stock?: number;
 }
 
-function ProductCard({ id, image, title, category, price }: ProductCardProps) {
+function ProductCard({
+  id,
+  image,
+  title,
+  category,
+  price,
+  stock,
+}: ProductCardProps) {
   const theme = useTheme();
   const style = productCardStyles(theme);
 
@@ -31,6 +40,14 @@ function ProductCard({ id, image, title, category, price }: ProductCardProps) {
           style={{ objectFit: 'cover' as const }}
           sizes='100vw'
         />
+        {!stock && (
+          <Chip
+            sx={{ zIndex: 2 }}
+            label='Out of Sock'
+            variant='filled'
+            color='error'
+          />
+        )}
       </Box>
       <Box sx={style.content}>
         <Link href={`/product/${id}`}>

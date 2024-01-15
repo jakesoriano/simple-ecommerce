@@ -4,6 +4,7 @@ import CartItem from '@/components/Cart/CartItem';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 import { useSelector } from 'react-redux';
 import { formatCurrecy } from '@/helpers/utility';
@@ -33,9 +34,21 @@ function Cart() {
       >
         {renderedCartItems}
       </Box>
-      <Typography variant='h5' sx={{ fontWeight: 700, textAlign: 'right' }}>
-        {formatCurrecy(cartTotalPrice)}
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant='h6' sx={{ fontWeight: 700 }}>
+          Total:
+        </Typography>
+        <Typography variant='h6' sx={{ fontWeight: 700, textAlign: 'right' }}>
+          {formatCurrecy(cartTotalPrice)}
+        </Typography>
+      </Box>
+      <Button
+        variant='contained'
+        size='small'
+        sx={{ color: 'common.white', float: 'right', mt: '24px' }}
+      >
+        Checkout
+      </Button>
     </>
   );
 }

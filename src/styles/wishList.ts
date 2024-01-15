@@ -21,4 +21,5 @@ export const wishListStyles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
+  removeButton: { fontSize: '0.75rem', alignSelf: 'end', cursor: 'pointer' },
 };

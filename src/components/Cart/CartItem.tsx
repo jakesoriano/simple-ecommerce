@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
 
 import { useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '@/store';
@@ -50,12 +51,14 @@ function CartItem({ item }: CartItemProps) {
       }}
     >
       <Box sx={{ position: 'relative', height: '60px', width: '80px' }}>
-        <Image
-          src={item.thumbnail}
-          alt={item.title}
-          quality={100}
-          fill={true}
-        />
+        <Link href={`/product/${item.id}`}>
+          <Image
+            src={item.thumbnail}
+            alt={item.title}
+            quality={100}
+            fill={true}
+          />
+        </Link>
       </Box>
       <Box
         sx={{
@@ -66,9 +69,11 @@ function CartItem({ item }: CartItemProps) {
         }}
       >
         <Box sx={{ flex: 1 }}>
-          <Typography sx={{ fontWeight: 700, fontSize: '0.875rem' }}>
-            {item.title}
-          </Typography>
+          <Link href={`/product/${item.id}`}>
+            <Typography sx={{ fontWeight: 700, fontSize: '0.875rem' }}>
+              {item.title}
+            </Typography>
+          </Link>
           <Typography sx={{ fontSize: '0.75rem' }}>{item.brand}</Typography>
 
           <Box

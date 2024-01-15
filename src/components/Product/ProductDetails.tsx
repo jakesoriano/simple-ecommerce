@@ -127,7 +127,11 @@ function ProductDetails({ product }: any) {
         <IconButton sx={style.actionIcon} onClick={handleAddToWishList}>
           <FavoriteBorderOutlinedIcon />
         </IconButton>
-        <IconButton sx={style.actionIcon} onClick={handleAddToCart}>
+        <IconButton
+          sx={style.actionIcon}
+          onClick={handleAddToCart}
+          disabled={!stock}
+        >
           <AddShoppingCartIcon />
         </IconButton>
         <IconButton sx={style.actionIcon}>
