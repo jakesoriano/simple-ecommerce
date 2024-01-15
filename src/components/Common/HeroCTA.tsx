@@ -67,6 +67,7 @@ function HeroCTA({
             variant='contained'
             color='primary'
             sx={{ color: 'common.white', display: 'block', m: 'auto' }}
+            disableElevation
           >
             {ctaText}
           </Button>
