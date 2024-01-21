@@ -18,19 +18,27 @@ function CartItem({ item }: CartItemProps) {
   const [quantity, setQuantity] = useState<number>(item.quantity);
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (id: number) => {
-    dispatch(removeFromCart(id));
-  };
+  const handleRemoveFromCart = useCallback(
+    (id: number) => {
+      dispatch(removeFromCart(id));
+    },
+    [dispatch]
+  );
 
-  const handleUpdateQuantity = (id: number) => {
-    dispatch(updateQuantity({ id, quantity }));
-  };
+  const handleUpdateQuantity = useCallback(
+    (id: number) => {
+      dispatch(updateQuantity({ id, quantity }));
+    },
+    [quantity, dispatch]
+  );
 
-  if (quantity > 0) {
-    handleUpdateQuantity(item.id);
-  } else {
-    handleRemoveFromCart(item.id);
-  }
+  useEffect(() => {
+    if (quantity > 0) {
+      handleUpdateQuantity(item.id);
+    } else {
+      handleRemoveFromCart(item.id);
+    }
+  }, [quantity, handleRemoveFromCart, handleUpdateQuantity, item.id]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const regex = /^[0-9\b]+$/;
